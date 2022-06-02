@@ -13,5 +13,9 @@ def login():
             return redirect(url_for('home'))
     return render_template('login.html', error=error)
 
+@app.route('/home')
+def home():
+    return '<h1You are logged in</h1>'
+    
 if __name__ == '_main__':
     app.run()
