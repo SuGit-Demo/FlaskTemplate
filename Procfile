@@ -1,1 +1,1 @@
-web: gunicorn app:firstFlask
+web: gunicorn firstFlask:app
