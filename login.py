@@ -17,5 +17,5 @@ def login():
 def home():
     return '<h1You are logged in</h1>'
     
-if __name__ == '_main__':
+if __name__ == '__main__':
     app.run()
