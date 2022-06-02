@@ -15,7 +15,7 @@ def login():
 
 @app.route('/home')
 def home():
-    return '<h1You are logged in</h1>'
+    return '<h1>You are logged in</h1>'
     
 if __name__ == '__main__':
     app.run()
