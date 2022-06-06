@@ -31,8 +31,9 @@ def login():
     resp = google.get('/plus/v1/people/me')
     assert resp.ok,resp.text
     email = resp.json()['email']
+    print("Here's the content of my response: " + resp.content)
 
-    return render_template('welcome.html',email=email)
+    #return render_template('welcome.html',email=email)
 
 if __name__ == '__main__':
     app.run()
