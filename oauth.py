@@ -27,16 +27,17 @@ def welcome():
 def login():
     if not google.authorized:
         return render_template(url_for('google.login'))
-    resp = google.get('/oauth2/v2/userinfo')
-    #resp = google.get('/plus/v1/people/me')
-    assert resp.ok,resp.text
-    email = resp.json()['email']
-    print("Here's the content of my response: " + resp.content)
+    #resp = google.get('/oauth2/v2/userinfo')
+    resp = google.get("/oauth2/v1/userinfo")
+    assert resp.ok, resp.text
+    return "You are {email} on Google".format(email=resp.json()["email"])    
+    #email = resp.json()['email']
+    #print("Here's the content of my response: " + resp.content)
     
-    resp = example_blueprint.session.get("/user")
-    assert resp.ok
-    print("Here's the content of my response: " + resp.content)
-    #return render_template('welcome.html',email=email)
+    #resp = example_blueprint.session.get("/user")
+    #assert resp.ok
+    #print("Here's the content of my response: " + resp.content)
+    return render_template('welcome.html',email=email)
 
 if __name__ == '__main__':
     app.run()
