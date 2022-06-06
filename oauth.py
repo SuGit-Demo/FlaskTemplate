@@ -9,7 +9,7 @@ app.secret_key = 'mysecret'
 blueprint = make_google_blueprint(client_id='479217618451-s9v5792onqdeuolnbuto1vh14vv02b6b.apps.googleusercontent.com',
                 client_secret='secretGOCSPX-_Mu6QsYayqjEGJF1a7UeqV1t0Whz',scope=['profile','email'])
 
-app.registerblueprint(blueprint,url_prefix='/login')
+app.register_blueprint(blueprint,url_prefix='/login')
 
 @app.route('/')
 def index():
