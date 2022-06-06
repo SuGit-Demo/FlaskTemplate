@@ -7,12 +7,12 @@ app.secret_key = 'mysecret'
 #app.config['SECRET_KEY'] = 'mysecret'
 
 app.config["GOOGLE_OAUTH_CLIENT_ID"] = '479217618451-s9v5792onqdeuolnbuto1vh14vv02b6b.apps.googleusercontent.com'
-app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = 'secretGOCSPX-_Mu6QsYayqjEGJF1a7UeqV1t0Whz'
+app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = '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'
 google_bp = make_google_blueprint(scope=["profile", "email"])
 app.register_blueprint(google_bp, url_prefix="/login")
 
 #blueprint = make_google_blueprint(client_id='479217618451-s9v5792onqdeuolnbuto1vh14vv02b6b.apps.googleusercontent.com',
-#                client_secret='secretGOCSPX-_Mu6QsYayqjEGJF1a7UeqV1t0Whz',scope=['profile','email'])
+#                client_secret='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',scope=['profile','email'])
 
 #app.register_blueprint(blueprint,url_prefix='/login')
 
