@@ -27,8 +27,8 @@ def welcome():
 def login():
     if not google.authorized:
         return render_template(url_for('google.login'))
-    #resp = google.get('/oauth2/v2/userinfo')
-    resp = google.get('/plus/v1/people/me')
+    resp = google.get('/oauth2/v2/userinfo')
+    #resp = google.get('/plus/v1/people/me')
     assert resp.ok,resp.text
     email = resp.json()['email']
     print("Here's the content of my response: " + resp.content)
