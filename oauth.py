@@ -4,7 +4,7 @@ from flask import Flask,redirect,url_for,render_template
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
-app.secret_key = 'mysecret'
+#app.secret_key = 'mysecret'
 #app.config['SECRET_KEY'] = 'mysecret'
 
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
