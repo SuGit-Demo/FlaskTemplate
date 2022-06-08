@@ -29,14 +29,14 @@ def welcome():
     email = resp.json()['email']
     return render_template('welcome.html',email=email)
 
-@app.route('/login')
+@app.route('/login/google')
 def login():
     if not google.authorized:
-        return render_template(url_for('google.login'))
+        return redirect(url_for('google.login'))
     resp = google.get('/oauth2/v2/userinfo')
     #resp = google.get("/oauth2/v1/userinfo")
     assert resp.ok, resp.text
-    return "You are {email} on Google".format(email=resp.json()["email"])    
+    #return "You are {email} on Google".format(email=resp.json()["email"])    
     #email = resp.json()['email']
     #print("Here's the content of my response: " + resp.content)
     
@@ -44,6 +44,3 @@ def login():
     #assert resp.ok
     #print("Here's the content of my response: " + resp.content)
     return render_template('welcome.html',email=email)
-
-if __name__ == '__main__':
-    app.run()
