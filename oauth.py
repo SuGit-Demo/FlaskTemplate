@@ -31,7 +31,7 @@ def welcome():
     email = resp.json()['email']
     return render_template('welcome.html',email=email)
 
-@app.route('/login/google')
+@app.route('/login')
 def login():
     if not google.authorized:
         return redirect(url_for('google.login'))
