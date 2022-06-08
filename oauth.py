@@ -1,18 +1,15 @@
 #oauth.py --> home.html --> welcome.html
-from flask import Flask, redirect, url_for, render_template, session
+import os
+from flask import Flask, redirect, url_for, render_template
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
+app.config["GOOGLE_OAUTH_CLIENT_ID"] = os.environ.get("GOOGLE_OAUTH_CLIENT_ID")
+app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET")
+google_bp = make_google_blueprint(scope=["profile", "email"])
+app.register_blueprint(google_bp, url_prefix="/login")
 
-app.config['SECRET_KEY'] = 'mysecretkey'
-blueprint = make_google_blueprint(
-    client_id="479217618451-s9v5792onqdeuolnbuto1vh14vv02b6b.apps.googleusercontent.com",
-    client_secret="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",
-    # reprompt_consent=True,
-    #offline=True,
-    scope=["profile", "email"]
-)
-app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route('/')
 def index():
@@ -36,7 +33,6 @@ def login():
     email=resp.json()["email"]
 
     return render_template("welcome.html",email=email)
-
 
 if __name__ == "__main__":
     app.debug = True
