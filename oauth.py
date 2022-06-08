@@ -25,8 +25,8 @@ def index():
 @app.route('/welcome')
 def welcome():
     #return internal server error if not logged in
-    resp = google.get('/oauth2/v2/userinfo')
-    #resp = google.get("/oauth2/v1/userinfo")
+    #resp = google.get('/oauth2/v2/userinfo')
+    resp = google.get("/oauth2/v1/userinfo")
     assert resp.ok,resp.text
     email = resp.json()['email']
     return render_template('welcome.html',email=email)
@@ -35,8 +35,8 @@ def welcome():
 def login():
     if not google.authorized:
         return redirect(url_for('google.login'))
-    resp = google.get('/oauth2/v2/userinfo')
-    #resp = google.get("/oauth2/v1/userinfo")
+    #resp = google.get('/oauth2/v2/userinfo')
+    resp = google.get("/oauth2/v1/userinfo")
     assert resp.ok, resp.text
     #return "You are {email} on Google".format(email=resp.json()["email"])    
     email = resp.json()['email']
