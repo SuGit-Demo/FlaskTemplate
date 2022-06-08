@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'mysecret'
 #app.config['SECRET_KEY'] = 'mysecret'
 
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
 app.config["GOOGLE_OAUTH_CLIENT_ID"] = os.environ.get("GOOGLE_OAUTH_CLIENT_ID")
 app.config["GOOGLE_OAUTH_CLIENT_SECRET"] = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET")
 google_bp = make_google_blueprint(scope=["profile", "email"])
