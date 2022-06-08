@@ -27,12 +27,12 @@ def welcome():
 def login():
     if not google.authorized:
         return render_template(url_for("google.login"))
+    else:        
+        resp = google.get("/oauth2/v2/userinfo")
+        assert resp.ok, resp.text
+        email=resp.json()["email"]
 
-    resp = google.get("/oauth2/v2/userinfo")
-    assert resp.ok, resp.text
-    email=resp.json()["email"]
-
-    return render_template("welcome.html",email=email)
+        return render_template("welcome.html",email=email)
 
 if __name__ == "__main__":
     app.debug = True
