@@ -31,7 +31,6 @@ def login():
         resp = google.get("/oauth2/v2/userinfo")
         assert resp.ok, resp.text
         email=resp.json()["email"]
-
         return render_template("welcome.html",email=email)
 
 if __name__ == "__main__":
