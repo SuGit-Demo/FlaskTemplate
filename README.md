@@ -1,7 +1,8 @@
 # This example is to show the interaction between the Flask APIs which act as the LOGIC Layer and the template folder (HTML) which act as the PRESENTATION Layer
 
 # 1) Example on your first Flask application (firstFlask.py)
-# 2) Example on your Flask and HTML interaction (app.py --> post.html)
+# 2) Example on your Flask and HTML interaction (app.py --> post.html --> index.html)
+# 3) Example on creating simple login page (login.py)
 # 3) Example on Google OAuth (oauth.py --> home.html --> welcome.html)
 Flask-Dance Example App: Google Edition
 This repository provides an example of how to use Flask-Dance to connect to Google as an OAuth client. The example code is in google.py -- all the other files in this repository are secondary. You can run this example code locally, or deploy it to Heroku for free to see how it runs in a production-style environment.
